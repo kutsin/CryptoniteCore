@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DevKit",
+        "repositoryURL": "https://github.com/kutsin/DevKit.git",
+        "state": {
+          "branch": null,
+          "revision": "70fef6760e7b58aec5b885d6323f7582516f0bc6",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "ZIPFoundation",
+        "repositoryURL": "https://github.com/weichsel/ZIPFoundation.git",
+        "state": {
+          "branch": null,
+          "revision": "cf10bbff6ac3b873e97b36b9784c79866a051a8e",
+          "version": "0.9.12"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
