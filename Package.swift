@@ -14,7 +14,7 @@ let package = Package(
             targets: ["CryptoniteCore"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/kutsin/DevKit.git", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/kutsin/DevKit.git", .branch("main")),
         .package(url: "https://github.com/weichsel/ZIPFoundation.git", .upToNextMajor(from: "0.9.0"))
     ],
     targets: [

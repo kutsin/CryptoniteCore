@@ -5,9 +5,9 @@
         "package": "DevKit",
         "repositoryURL": "https://github.com/kutsin/DevKit.git",
         "state": {
-          "branch": null,
-          "revision": "70fef6760e7b58aec5b885d6323f7582516f0bc6",
-          "version": "1.0.0"
+          "branch": "main",
+          "revision": "a20fe996aa48c77c737689559a4cbc37246231e2",
+          "version": null
         }
       },
       {
