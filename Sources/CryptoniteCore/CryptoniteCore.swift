@@ -293,8 +293,14 @@ extension CryptoniteCore {
     }
     
     private var cryptoniteDirectoryURL: URL {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let folderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            .first!
             .appendingPathComponent("Cryptonite")
+        if !FileManager.default.fileExists(atPath: folderURL.path) {
+            try! FileManager.default.createDirectory(at: folderURL,
+                                                     withIntermediateDirectories: true)
+        }
+        return folderURL
     }
     
     fileprivate var outputDirectoryURL: URL {
