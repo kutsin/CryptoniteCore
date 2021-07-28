@@ -21,7 +21,7 @@ public final class CryptoniteCore: NSObject {
                                completion: @escaping ([URL]?, Swift.Error?) -> Void) {
         shared.queue.async {
             do {
-                try shared.clearDocumentDirectory()
+                try shared.clearCryptoniteDirectory()
                 if isMultipleProcessing {
                     for sourceURL in sourceURLs {
                         _ = try shared.crypt(using: algorithm,
@@ -63,7 +63,7 @@ public final class CryptoniteCore: NSObject {
                                completion: @escaping ([URL]?, Swift.Error?) -> Void) {
         shared.queue.async {
             do {
-                try shared.clearDocumentDirectory()
+                try shared.clearCryptoniteDirectory()
                 
                 if isMultipleProcessing {
                     for sourceURL in sourceURLs {
@@ -220,7 +220,7 @@ extension CryptoniteCore {
                              progress: Progress? = nil) throws
     -> (sourceURL: URL, targetURL: URL) {
     
-        let inputURL = documentDirectoryURL.appendingPathComponent("Input")
+        let inputURL = cryptoniteDirectoryURL.appendingPathComponent("Input")
 
         try FileManager.default.createDirectory(at: inputURL, withIntermediateDirectories: true)
         try FileManager.default.createDirectory(at: outputDirectoryURL, withIntermediateDirectories: true)
@@ -257,7 +257,7 @@ extension CryptoniteCore {
                          shouldKeepParent: Bool = false,
                          progress: Progress? = nil) throws {
     
-        let temporaryDirectoryURL = documentDirectoryURL.appendingPathComponent("com.ZIPFoundation.Temp")
+        let temporaryDirectoryURL = cryptoniteDirectoryURL.appendingPathComponent("com.ZIPFoundation.Temp")
         try FileManager.default.createDirectory(at: temporaryDirectoryURL, withIntermediateDirectories: true)
         try FileManager.default.removeContentsOfDirectory(atPath: temporaryDirectoryURL.path)
         
@@ -288,17 +288,17 @@ extension CryptoniteCore {
         try handle.close_()
     }
     
-    private func clearDocumentDirectory() throws {
-        try FileManager.default.removeContentsOfDirectory(atPath: documentDirectoryURL.path)
+    private func clearCryptoniteDirectory() throws {
+        try FileManager.default.removeContentsOfDirectory(atPath: cryptoniteDirectoryURL.path)
     }
     
-    private var documentDirectoryURL: URL {
-        return FileManager.default.urls(for: .documentDirectory,
-                                        in: .userDomainMask).first!
+    private var cryptoniteDirectoryURL: URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            .appendingPathComponent("Cryptonite")
     }
     
     fileprivate var outputDirectoryURL: URL {
-        return documentDirectoryURL.appendingPathComponent("Output")
+        return cryptoniteDirectoryURL.appendingPathComponent("Output")
     }
 }
 
